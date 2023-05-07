@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const User = require('./models/User');
-const Thought = require('./models/Thought');
-const data = require('./seedData/data');
+const User = require('../models/User');
+const Thought = require('../models/Thought');
+const data = require('../utils/data');
 
 // Connect to the MongoDB database
 mongoose.connect('mongodb://127.0.0.1:27017/socialnetworkDB', {
