@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Create the Reaction Schema within the Thought Model
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -31,6 +32,7 @@ const reactionSchema = new Schema(
   }
 );
 
+// Create the Thought Schema
 const thoughtSchema = new Schema(
   {
     thoughtText: {
