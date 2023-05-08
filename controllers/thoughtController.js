@@ -4,7 +4,7 @@ const User = require('../models/User');
 
 const thoughtController = {
   // GET all thoughts
-  getAllThoughts: async (req, res) => {
+  async getAllThoughts(req, res) {
     try {
       const thoughts = await Thought.find().populate('reactions');
       res.json(thoughts);
@@ -15,7 +15,7 @@ const thoughtController = {
   },
 
   // GET a single thought by its id
-  getThoughtById: async (req, res) => {
+  async getThoughtById(req, res) {
     try {
       const thought = await Thought.findById(req.params.thoughtId).populate('reactions');
       if (!thought) {
@@ -30,7 +30,7 @@ const thoughtController = {
   },
 
   // POST a new thought
-  createThought: async (req, res) => {
+  async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
       // Push the created thought's id to the associated user's thoughts array field
@@ -47,7 +47,7 @@ const thoughtController = {
   },
 
   // PUT to update a thought by its id
-  updateThought: async (req, res) => {
+  async updateThought(req, res) {
     try {
       const thought = await Thought.findByIdAndUpdate(
         req.params.thoughtId,
@@ -66,7 +66,7 @@ const thoughtController = {
   },
 
   // DELETE to remove a thought by its id
-  deleteThought: async (req, res) => {
+  async deleteThought(req, res) {
     try {
       const thought = await Thought.findByIdAndDelete(req.params.thoughtId);
       if (!thought) {
@@ -86,7 +86,7 @@ const thoughtController = {
     }
   },
   // POST to create a reaction stored in a single thought's reactions array field
-  createReaction: async (req, res) => {
+  async createReaction(req, res) {
     try {
       const thought = await Thought.findByIdAndUpdate(
         req.params.thoughtId,
@@ -105,7 +105,7 @@ const thoughtController = {
   },
 
   // DELETE to pull and remove a reaction by the reaction's reactionId value
-  deleteReaction: async (req, res) => {
+  async deleteReaction(req, res) {
     try {
       const thought = await Thought.findByIdAndUpdate(
         req.params.thoughtId,

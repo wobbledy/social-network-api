@@ -4,7 +4,7 @@ const Thought = require('../models/Thought');
 
 const userController = {
   // GET all users
-  getAllUsers: async (req, res) => {
+  async getAllUsers(req, res) {
     try {
       const users = await User.find().populate('thoughts').populate('friends');
       res.json(users);
@@ -15,7 +15,7 @@ const userController = {
   },
 
   // GET a single user by its id and populated thought and friend data
-  getUserById: async (req, res) => {
+  async getUserById(req, res) {
     try {
       const user = await User.findById(req.params.userId)
         .populate('thoughts')
@@ -32,7 +32,7 @@ const userController = {
   },
 
   // POST a new user
-  createUser: async (req, res) => {
+  async createUser(req, res) {
     try {
       const user = await User.create(req.body);
       res.json(user);
@@ -43,7 +43,7 @@ const userController = {
   },
 
   // PUT to update a user by its id
-  updateUser: async (req, res) => {
+  async updateUser(req, res) {
     try {
       const user = await User.findByIdAndUpdate(
         req.params.userId,
@@ -62,7 +62,7 @@ const userController = {
   },
 
   // DELETE to remove user by its id
-  deleteUser: async (req, res) => {
+  async deleteUser(req, res) {
     try {
       const user = await User.findByIdAndDelete(req.params.userId);
       if (!user) {
@@ -77,7 +77,7 @@ const userController = {
   },
 
   // POST to add a friend to a user's friend list
-  addFriend: async (req, res) => {
+  async addFriend(req, res) {
     try {
       const user = await User.findByIdAndUpdate(
         req.params.userId,
@@ -96,7 +96,7 @@ const userController = {
   },
 
   // DELETE to remove a friend from a user's friend list
-  removeFriend: async (req, res) => {
+  async removeFriend(req, res) {
     try {
       const user = await User.findByIdAndUpdate(
         req.params.userId,
